@@ -1,0 +1,15 @@
+const hasDuplicate=(arr)=>{
+   
+    let set=new Set(arr);
+   
+    if(arr.length!==set.size){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  console.log(hasDuplicate([7,2,3,9,3,4,6]));
+
+  console.log(hasDuplicate([1,2,3,4])) 
