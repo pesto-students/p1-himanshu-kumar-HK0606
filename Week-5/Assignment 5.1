@@ -1,0 +1,50 @@
+function makeRequest(location) {
+    return new Promise((resolve, reject) => {
+     console.log(`Making request to ${location}`)
+     if (location === 'Windows') {
+      resolve('Windows says hi')
+     } else {
+      reject('We can only talk to Google')
+     }
+    })
+   }
+   
+   function processRequest(response) {
+    return new Promise((resolve, reject) => {
+     console.log('Processing Response')
+     resolve(`Extra Information + ${response}`)
+    })
+   }
+   
+   async function doWork() {
+    try {
+      const response = await makeRequest('Windows')
+      console.log('Response received')
+      const processedResponse = await processRequest(response)
+      console.log(processedResponse)
+    } catch(err) {
+      console.log(err)
+    }
+   
+   }
+   
+   // doWork()
+   
+   function* useCaseGen(location) {
+    console.log(`Making request to ${location}`)
+    if (location === 'Windows') {
+     yield 'Response received';
+     yield 'Processing Response'
+     yield 'Extra Information + Windows Says Hi'
+    } else {
+     yield 'We can only talk to Windows'
+    }
+   }
+   
+   let i = useCaseGen('Windows');
+   console.log(i.next());
+   console.log(i.next());
+   console.log(i.next());
+   console.log(i.next());
+   
+   doWork()
