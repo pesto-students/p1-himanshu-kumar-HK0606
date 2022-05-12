@@ -1,0 +1,13 @@
+function contiguousSum(arr){
+    var max = 0;
+    var Max1 = 0;
+    for(let i in arr){
+        Max1+=arr[i];
+        if(Max1 < 0)
+            Max1 = 0;
+        if(max<Max1)
+            max=Max1
+        }
+    return max;
+}
+console.log(contiguousSum([-1,-3,5,7,-9,5]));
